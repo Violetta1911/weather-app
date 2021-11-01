@@ -1,0 +1,26 @@
+.city-card{
+    width: 200px;
+    margin: 20px 10px;    
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 5px 5px rgba(129, 129, 117, 0.2);
+    color: grey;
+    font-size: 14px;
+    
+
+}
+h1 {
+    font-size: 18px; 
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+}
+.temp {
+    margin: 0;
+    font-size: 36px;
+    font-style: italic;
+    color: rgb(58, 57, 57);
+}
+.other-spec {
+    text-align: left;
+}
