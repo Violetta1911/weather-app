@@ -1,0 +1,14 @@
+.remove {
+    position: relative;
+    right: -80px;
+    top: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.more {
+    border: none;
+    background-color: transparent;
+    color: rgb(64, 181, 224);
+    cursor: pointer;
+}

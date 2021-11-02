@@ -1,15 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './CityCard.css';
+import Button from '../Button/Button';
 
-const CityCard = ({ city, onGoToCard }) => {
+const CityCard = ({ city, onGoToCard, onRemove }) => {
 	const icon = `http://openweathermap.org/img/wn/${city.weather}@2x.png`;
 	return (
-		<div className='city-card' onClick={(e) => onGoToCard(e)}>
+		<div className='city-card'>
+			<Button
+				className='remove'
+				title='x'
+				onClick={(e) => onRemove(e, city.id)}
+			/>
+
 			<h1 className='title'>{city.title}</h1>
 			<p className='temp'>{Math.round(city.temp)}°C</p>
 
-			<img src={icon}></img>
+			<img src={icon} alt='weather' />
 			<div className='other-spec'>
 				<p>
 					Влажность <strong>{city.humidity} </strong> %
@@ -21,6 +27,11 @@ const CityCard = ({ city, onGoToCard }) => {
 					Скорость ветра <strong>{Math.round(city.wind.speed)}</strong> м/с
 				</p>
 			</div>
+			<Button
+				className='more'
+				title='подробнее'
+				onClick={(e) => onGoToCard(e, city.id)}
+			/>
 		</div>
 	);
 };

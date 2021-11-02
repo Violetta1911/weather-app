@@ -1,9 +1,6 @@
-.App {
-  text-align: center;
-}
 
-.App {
-  background-image: url('https://lh3.googleusercontent.com/proxy/1gxOnBgWJ-gwpBwk4Ev4VoImFCEqGxqXuBjs9LaXT4SAUk8OuXtaKvM9CBMORe2BVDZIiK2yHDyYsEXTquoBfiCVFbqG8gYkk0N_8ycpUjTtTsX5JHNUGoJwet9o2xXcQ8T6');
+.home {
+  background-image: url('../../bg_home.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -16,6 +13,7 @@
   padding: 20px;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-align: center;
 }
 
 .city-cards {
