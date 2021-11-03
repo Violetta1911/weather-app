@@ -1,14 +1,28 @@
 .remove {
-    position: relative;
-    right: -80px;
-    top: 10px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
-.more {
-    border: none;
+
+.update, .update-card{
+    width: 100px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(64, 181, 224);
+    border-radius: 5px;
     background-color: transparent;
     color: rgb(64, 181, 224);
     cursor: pointer;
+    padding: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+
+    
+}
+.update{
+    position: absolute;
+    bottom: 25px;
+    right: 50px;
 }

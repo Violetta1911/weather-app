@@ -4,7 +4,7 @@ import './Input.css';
 const Input = ({
 	className,
 	placeholder,
-	onHandleInput,
+	handleInput,
 	query,
 	searchWeather,
 }) => {
@@ -13,7 +13,7 @@ const Input = ({
 			className={className}
 			type='text'
 			placeholder={placeholder}
-			onChange={onHandleInput}
+			onChange={handleInput}
 			value={query}
 			onKeyPress={searchWeather}
 		/>

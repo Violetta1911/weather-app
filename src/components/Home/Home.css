@@ -21,6 +21,14 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.more{
+  text-decoration: none;
+}
+.card-wrapper {
+  max-width: 200px;
+  position: relative;
+}
+
 
 
 
