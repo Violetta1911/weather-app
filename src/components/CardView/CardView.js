@@ -2,6 +2,7 @@ import React from 'react';
 import './CardView.css';
 import CityCard from '../CityCard/CityCard';
 import { Link } from 'react-router-dom';
+import WeatherDetails from './WeatherDetails';
 
 const CardView = ({ cityWeather, updateWeather }) => {
 	return (
@@ -10,25 +11,15 @@ const CardView = ({ cityWeather, updateWeather }) => {
 				key={cityWeather.id}
 				city={cityWeather}
 				onGoTo={() => console.log('hello')}
-				onClick={(e) => updateWeather(e, cityWeather.title)}
+				onUpdate={(e) => updateWeather(e, cityWeather.title)}
 				linkAddress='/'
-				buttonClassName='update-card'
-				buttonTitle='обновить'
+				buttonClassNameUpdate='update-card'
+				buttonClassNameRemove='remove-card'
+				buttonTitleUpdate='обновить'
 				linkClassName='back'
 				linkTitle='вернуться к списку'
 				linkRole='link'>
-				<div className='other-spec'>
-					<p>
-						Влажность <strong>{cityWeather.humidity} </strong> %
-					</p>
-					<p>
-						Давление <strong>{cityWeather.pressure} </strong>мм рт.ст.
-					</p>
-					<p>
-						Скорость ветра <strong>{Math.round(cityWeather.wind.speed)}</strong>{' '}
-						м/с
-					</p>
-				</div>
+				<WeatherDetails cityWeather={cityWeather} />
 				<Link to='/' className='back'>
 					Вернуться к списку
 				</Link>

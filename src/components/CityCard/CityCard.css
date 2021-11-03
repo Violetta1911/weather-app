@@ -1,10 +1,10 @@
 .city-card{
     position: relative;
-    min-width: 150px;
+    min-width: 170px;
     margin: 20px 10px;    
     padding: 20px 15px;
     border-radius: 20px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.7);
     box-shadow: 5px 5px rgba(129, 129, 117, 0.2);
     color: grey;
     font-size: 14px;
@@ -24,4 +24,7 @@ h1 {
 }
 .other-spec {
     text-align: left;
+}
+img{
+    margin-bottom: 30px;
 }

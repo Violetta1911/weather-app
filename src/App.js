@@ -4,11 +4,8 @@ import CardView from './components/CardView/CardView';
 import Home from './components/Home/Home';
 import { withRouter } from 'react-router';
 import { uuid } from 'uuidv4';
+import { getWeatherByCity } from './Api';
 
-const api = {
-	key: '6dbb48040117b5976da7c1c299b58cf0',
-	base: 'https://api.openweathermap.org/data/2.5/',
-};
 let citiesFromStorage = JSON.parse(localStorage.getItem('cities'));
 
 const App = () => {
@@ -22,17 +19,16 @@ const App = () => {
 		if (citiesFromStorage === null) {
 			return;
 		}
-
 		const promises = await citiesFromStorage.map(async (city) => {
-			const response = await fetch(
-				`${api.base}weather?q=${city}&units=metric&id=524901&lang=ru&APPID=${api.key}`,
-			);
-			const weather = await response.json();
+			const weather = await getWeatherByCity(city);
 
 			const cityWeather = {
 				id: { uuid },
 				title: weather.name,
 				temp: weather.main.temp,
+				feels_like: weather.main.feels_like,
+				temp_min: weather.main.temp_min,
+				temp_max: weather.main.temp_max,
 				humidity: weather.main.humidity,
 				wind: weather.wind,
 				pressure: weather.main.pressure,
@@ -47,13 +43,13 @@ const App = () => {
 		setCitiesWeather(data);
 	}
 
-	async function updateWeather(e, city) {
-		e.preventDefault();
+	async function searchWeather(e) {
+		if (e.key !== 'Enter') {
+			return;
+		}
+		const weather = await getWeatherByCity(query);
 
-		const response = await fetch(
-			`${api.base}weather?q=${city}&units=metric&id=524901&lang=ru&APPID=${api.key}`,
-		);
-		const weather = await response.json();
+		setQuery('');
 
 		if (weather && weather.main) {
 			const cityWeather = {
@@ -63,32 +59,6 @@ const App = () => {
 				feels_like: weather.main.feels_like,
 				temp_min: weather.main.temp_min,
 				temp_max: weather.main.temp_max,
-				humidity: weather.main.humidity,
-				wind: weather.wind,
-				pressure: weather.main.pressure,
-				clouds: weather.clouds,
-				weather: weather.weather[0].icon,
-			};
-			setCityWeather(cityWeather);
-		}
-	}
-
-	async function searchWeather(e) {
-		if (e.key !== 'Enter') {
-			return;
-		}
-		const response = await fetch(
-			`${api.base}weather?q=${query}&units=metric&id=524901&lang=ru&APPID=${api.key}`,
-		);
-		const weather = await response.json();
-
-		setQuery('');
-
-		if (weather && weather.main) {
-			const cityWeather = {
-				id: Math.random().toFixed(4),
-				title: weather.name,
-				temp: weather.main.temp,
 				humidity: weather.main.humidity,
 				wind: weather.wind,
 				pressure: weather.main.pressure,
@@ -106,6 +76,29 @@ const App = () => {
 			setCitiesWeather([...citiesWeather, cityWeather]);
 		} else {
 			alert('К сожалению, объект не обнаружен...Попробуйте снова ');
+		}
+	}
+
+	async function updateWeather(e, city) {
+		e.preventDefault();
+
+		const weather = await getWeatherByCity(city);
+
+		if (weather && weather.main) {
+			const cityWeather = {
+				id: { uuid },
+				title: weather.name,
+				temp: weather.main.temp,
+				feels_like: weather.main.feels_like,
+				temp_min: weather.main.temp_min,
+				temp_max: weather.main.temp_max,
+				humidity: weather.main.humidity,
+				wind: weather.wind,
+				pressure: weather.main.pressure,
+				clouds: weather.clouds,
+				weather: weather.weather[0].icon,
+			};
+			setCityWeather(cityWeather);
 		}
 	}
 

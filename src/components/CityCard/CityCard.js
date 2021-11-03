@@ -1,13 +1,16 @@
-import React, { Children } from 'react';
+import React from 'react';
 
 import './CityCard.css';
 import Button from '../Button/Button';
 
 const CityCard = ({
 	city,
-	onClick,
-	buttonClassName,
-	buttonTitle,
+	onUpdate,
+	onRemove,
+	buttonClassNameRemove,
+	buttonClassNameUpdate,
+	buttonTitleRemove,
+	buttonTitleUpdate,
 	children,
 }) => {
 	const icon = `http://openweathermap.org/img/wn/${city.weather}@2x.png`;
@@ -19,9 +22,14 @@ const CityCard = ({
 
 			{children}
 			<Button
-				className={buttonClassName}
-				title={buttonTitle}
-				onClick={(e) => onClick(e, city.title)}
+				className={buttonClassNameRemove}
+				title={buttonTitleRemove}
+				onClick={(e) => onRemove(e, city.title)}
+			/>
+			<Button
+				className={buttonClassNameUpdate}
+				title={buttonTitleUpdate}
+				onClick={(e) => onUpdate(e, city.title)}
 			/>
 		</div>
 	);
