@@ -3,7 +3,6 @@ import './Home.css';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import CityCard from '../CityCard/CityCard';
-import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { uuid } from 'uuidv4';
 
@@ -56,5 +55,4 @@ const Home = ({
 		</div>
 	);
 };
-const HomeWithRouter = withRouter(Home);
-export default HomeWithRouter;
+export default Home;
