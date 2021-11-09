@@ -7,16 +7,19 @@ const Input = ({
 	handleInput,
 	query,
 	searchWeather,
+	onHandelSubmit,
 }) => {
 	return (
-		<input
-			className={className}
-			type='text'
-			placeholder={placeholder}
-			onChange={handleInput}
-			value={query}
-			onKeyPress={searchWeather}
-		/>
+		<form onSubmit={onHandelSubmit}>
+			<input
+				className={className}
+				type='text'
+				placeholder={placeholder}
+				onChange={handleInput}
+				value={query}
+				onKeyPress={searchWeather}
+			/>
+		</form>
 	);
 };
 
