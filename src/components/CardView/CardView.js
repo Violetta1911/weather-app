@@ -3,19 +3,16 @@ import './CardView.css';
 import CityCard from '../CityCard/CityCard';
 import { Link } from 'react-router-dom';
 import WeatherDetails from './WeatherDetails';
-import { useSelector } from 'react-redux';
 
-const CardView = () => {
-	const cityWeather = useSelector(
-		(state) => state.mainReducer.detailCityWeather,
-	);
+const CardView = ({ cityWeather, updateWeather }) => {
+	console.log(cityWeather.id);
 	return (
 		<div className='card-view'>
 			<CityCard
 				key={cityWeather.id}
 				city={cityWeather}
 				onGoTo={() => console.log('hello')}
-				// onUpdate={(e) => updateWeather(e, cityWeather.title)}
+				onUpdate={(e) => updateWeather(e, cityWeather.title)}
 				linkAddress='/'
 				buttonClassNameUpdate='update-card'
 				buttonClassNameRemove='remove-card'

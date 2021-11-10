@@ -1,4 +1,3 @@
-let citiesFromStorage = JSON.parse(localStorage.getItem('cities'));
 export const getWeatherByCity = async (city) => {
 	const api = {
 		key: '6dbb48040117b5976da7c1c299b58cf0',
@@ -38,12 +37,8 @@ export async function searchCityWeather(city) {
 	return cityWeather;
 }
 
-export const addCityToLocalStorage = (city) => {
-	citiesFromStorage
-		? citiesFromStorage.push(city)
-		: (citiesFromStorage = [city]);
-
-	localStorage.setItem('cities', JSON.stringify(citiesFromStorage));
+export const addCityToLocalStorage = (cities) => {
+	localStorage.setItem('cities', JSON.stringify(cities));
 };
 export async function getWeatherFromStorage(citiesFromStorage) {
 	if (citiesFromStorage === null) {
