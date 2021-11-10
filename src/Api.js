@@ -12,15 +12,14 @@ export const getWeatherByCity = async (city) => {
 	return weather;
 };
 
-export async function searchCityWeather(city, id) {
+export async function searchCityWeather(city) {
 	const weather = await getWeatherByCity(city);
 
 	let cityWeather = {};
 
 	if (weather && weather.main) {
 		cityWeather = {
-			id: id,
-			city_id: weather.id,
+			id: weather.id,
 			title: weather.name,
 			temp: weather.main.temp,
 			feels_like: weather.main.feels_like,
@@ -46,7 +45,7 @@ export const addCityToLocalStorage = (city) => {
 
 	localStorage.setItem('cities', JSON.stringify(citiesFromStorage));
 };
-export async function getWeatherFromStorage(citiesFromStorage, id) {
+export async function getWeatherFromStorage(citiesFromStorage) {
 	if (citiesFromStorage === null) {
 		return;
 	}
@@ -54,7 +53,7 @@ export async function getWeatherFromStorage(citiesFromStorage, id) {
 		const weather = await getWeatherByCity(city);
 
 		const cityWeather = {
-			id: id,
+			id: weather.id,
 			title: weather.name,
 			temp: weather.main.temp,
 			feels_like: weather.main.feels_like,
@@ -74,7 +73,7 @@ export async function getWeatherFromStorage(citiesFromStorage, id) {
 	return data;
 }
 
-export async function updateWeather(e, city, id) {
+export async function updateWeather(e, city) {
 	e.preventDefault();
 	let cityWeather = {};
 
@@ -82,7 +81,7 @@ export async function updateWeather(e, city, id) {
 
 	if (weather && weather.main) {
 		cityWeather = {
-			id: id,
+			id: weather.id,
 			title: weather.name,
 			temp: weather.main.temp,
 			feels_like: weather.main.feels_like,

@@ -8,7 +8,10 @@ import { createStore } from 'redux';
 import { rootReducer } from './redux/rootReducer';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(rootReducer);
+const store = createStore(
+	rootReducer /* preloadedState, */,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 
 ReactDOM.render(
 	<Provider store={store}>
